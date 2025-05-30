@@ -26,12 +26,17 @@ pip install happybase thriftpy2
 
 ## 🚀 Lancement des services nécessaires
 
-Assurez-vous de démarrer tous les services Hadoop & HBase avant de lancer le script : (Voir fichier hbase_install.md si nécessaire)
+Assurez-vous de démarrer tous les services Hadoop & HBase (shell) avant de lancer le script : (Voir fichier hbase_install.md si nécessaire)
 
 ```bash
 start-dfs.sh
 start-yarn.sh
 start-hbase.sh
+
+hbase shell
+
+#vérifier le status
+status
 ```
 
 ## Démarrer le serveur Thrift (nécessaire pour HappyBase) :
@@ -47,19 +52,6 @@ source ~/.bashrc
 ```bash
 hbase thrift start
 ```
-
----
-
-## 📝 Exemple de contenu du fichier `routes.csv`
-
-```csv
-id,name,distance
-1,Route A,10.5
-2,Route B,20.3
-3,Route C,15.7
-```
-
----
 
 ## 🐍 Lancement du script Python
 
