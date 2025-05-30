@@ -13,19 +13,19 @@ cd /home/vagrant
 Téléchargez directement Apache Spark avec Scala 2.13.X :
 
 ```bash
-wget https://dlcdn.apache.org/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3-scala2.13.tgz
+wget https://dlcdn.apache.org/spark/spark-3.5.6/spark-3.5.6-bin-hadoop3.tgz
 ```
 
 Extraire l'archive :
 
 ```bash
-tar -xvzf spark-3.5.5-bin-hadoop3-scala2.13.tgz
+tar -xvzf spark-3.5.6-bin-hadoop3.tgz
 ```
 
 Renommez le dossier extrait :
 
 ```bash
-mv spark-3.5.5-bin-hadoop3-scala2.13 spark
+mv spark-3.5.6-bin-hadoop3 spark
 ```
 
 ### 2. Lancer Spark Shell
