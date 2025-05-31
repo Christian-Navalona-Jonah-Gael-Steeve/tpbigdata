@@ -3,9 +3,9 @@
 hdfs dfs -mkdir -p /data/air_transport
 ```
 
-## 2- Copier le fichier local `airports.csv` vers le dossier HDFS
+## 2- Copier le fichier local `airplanes.csv` vers le dossier HDFS
 ```bash
-hdfs dfs -put /home/vagrant/datasets/airports.csv /data/air_transport/
+hdfs dfs -put /home/vagrant/datasets/airplanes.csv /data/air_transport/
 ```
 
 ## 3- Le fichier est verifiable par la commande
