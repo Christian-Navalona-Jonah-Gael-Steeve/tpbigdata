@@ -33,7 +33,9 @@ CREATE TABLE airports (
     altitude INT,
     timezone VARCHAR(10),
     dst VARCHAR(10),
-    tz VARCHAR(100)
+    tz_database_time_zone VARCHAR(100),
+    type VARCHAR(100),
+    source VARCHAR(100)
 );
 
 LOAD DATA INFILE '/var/lib/mysql-files/airports.csv' 
