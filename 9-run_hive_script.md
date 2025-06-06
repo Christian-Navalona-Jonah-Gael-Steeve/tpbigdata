@@ -12,7 +12,9 @@ beeline -u jdbc:hive2://localhost:10000 vagrant
 ```
 
 ## 3- Créer des tables externes dans Hive
-###  3-1 airports (mysql)
+
+### 3-1 airports (mysql)
+
 ```sql
 CREATE EXTERNAL TABLE airports_mysql (
   airport_id INT,
@@ -40,11 +42,15 @@ TBLPROPERTIES (
   "hive.sql.table" = "airports"
 );
 ```
-Vérification: 
+
+Vérification:
+
 ```sql
-SELECT * FROM airports_mysql LIMIT 10;  
+SELECT * FROM airports_mysql LIMIT 10;
 ```
-###  3-2 routes (hbase)
+
+### 3-2 routes (hbase)
+
 ```sql
 CREATE EXTERNAL TABLE routes_hbase (
   index STRING,
@@ -67,7 +73,30 @@ TBLPROPERTIES (
 );
 ```
 
-Vérification: 
+Vérification:
+
 ```sql
-SELECT * FROM routes_hbase LIMIT 10;  
+SELECT * FROM routes_hbase LIMIT 10;
+```
+
+### 3-3 airplanes (hdfs)
+
+```sql
+CREATE EXTERNAL TABLE airplanes_hdfs (
+    index INT,
+    name STRING,
+    iata_code STRING,
+    icao_code STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/data/air_transport/airplanes'
+TBLPROPERTIES ('skip.header.line.count'='1');
+```
+
+Vérification:
+
+```sql
+SELECT * FROM airplanes_hdfs ORDER BY INDEX DESC LIMIT 10;
 ```
