@@ -121,7 +121,8 @@ Dans Beeline :
 
 ```sql
 CREATE TABLE airlines_couchbase (
-  airline_id INT,
+  index STRING,
+  airline_id STRING,
   name STRING,
   alias STRING,
   iata STRING,
@@ -176,7 +177,7 @@ def load_and_write():
 
     # Lecture des index déjà insérés dans Hive
     try:
-        df_hive = spark.table("airlines_hive").select("index")
+        df_hive = spark.table("airlines_couchbase").select("index")
     except:
         # Si la table Hive n'existe pas encore
         df_hive = spark.createDataFrame([], df_clean.schema)
@@ -187,7 +188,7 @@ def load_and_write():
     # Insère seulement les nouvelles lignes
     new_count = df_new.count()
     if new_count > 0:
-        df_new.write.mode("append").insertInto("airlines_hive")
+        df_new.write.mode("append").insertInto("airlines_couchbase")
         print(f"✅ {new_count} nouvelles lignes insérées dans Hive.")
     else:
         print("⚠️ Aucune nouvelle ligne à insérer.")
