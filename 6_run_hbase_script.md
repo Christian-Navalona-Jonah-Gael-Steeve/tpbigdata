@@ -37,9 +37,11 @@ hbase shell
 
 #vérifier le status
 status
+
+#Laisser ce terminal ouvert une fois que hbase ait bien démarré
 ```
 
-## Démarrer le serveur Thrift (nécessaire pour HappyBase) :
+## Démarrer le serveur Thrift (Dans un autre terminal) :
 
 Vérifier que les variables sont bien chargées:
 
@@ -53,7 +55,7 @@ source ~/.bashrc
 hbase thrift start
 ```
 
-## 🐍 Lancement du script Python
+## 🐍 Lancement du script Python (Dans un autre terminal)
 
 ```bash
 python hbase_script.py
