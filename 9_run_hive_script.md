@@ -101,13 +101,18 @@ Vérification:
 SELECT * FROM airplanes_hdfs ORDER BY INDEX DESC LIMIT 10;
 ```
 
-## 4- Créer des tables internes dans Hive 
+## 4- Créer des tables internes dans Hive
+
 ### airlines (couchbases)
+
 Étape 1 : Télécharger et extraire le connecteur Couchbase-Spark
 
 ```bash
 cd /vagrant/scripts
-wget https://packages.couchbase.com/clients/connectors/spark/3.5.2/Couchbase-Spark-Connector_2.12-3.5.2.zip?_gl=1*190af9b*_gcl_au*OTE5MzA0MzY0LjE3NDkyMTQ0MjA.
+wget -O Couchbase-Spark-Connector_2.12-3.5.2.zip 'https://packages.couchbase.com/clients/connectors/spark/3.5.2/Couchbase-Spark-Connector_2.12-3.5.2.zip?_gl=1*190af9b*_gcl_au*OTE5MzA0MzY0LjE3NDkyOTQ0MjA.'
+```
+
+```bash
 unzip Couchbase-Spark-Connector_2.12-3.5.2.zip
 ```
 
@@ -128,6 +133,7 @@ CREATE TABLE airlines_couchbase (
 STORED AS PARQUET;
 
 ```
+
 Étape 3 : Créer le script de synchronisation Couchbase → Hive
 `/vagrant/scripts/hive_couchbase_script.py`
 Ce script lit les données de Couchbase, les nettoie, filtre les doublons, et insère les nouvelles lignes dans Hive toutes les 60 secondes.
@@ -199,15 +205,13 @@ finally:
 
 ```
 
-
 Étape 4 : Lancer le script
-
 
 ```bash
 spark-submit \
   --master local[*] \
   --jars /vagrant/scripts/spark-connector-assembly-3.5.2.jar \
-  /vagrant/scripts/hive_couchbase_sript.py
+  /vagrant/scripts/hive_couchbase_script.py
 ```
 
 Vérification :
