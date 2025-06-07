@@ -17,7 +17,7 @@ beeline -u jdbc:hive2://localhost:10000 vagrant
 
 ```sql
 CREATE EXTERNAL TABLE airports_mysql (
-  airport_id INT,
+  id INT,
   name STRING,
   city STRING,
   country STRING,
